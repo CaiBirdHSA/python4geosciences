@@ -10,7 +10,7 @@ fu = open('users_' + name + '.txt')
 fp = open('passwds_'+ name + '.txt')
 
 text = '''
-Python for Geosciences
+Python for Geosciences student {username}
 
 You will need a username and password to log into the computer where we will view the class materials and work on the homework assignments. You will only be able to access this off-campus if you use VPN to connect to campus first. You can set up VPN by going to https://connect.tamu.edu, sign in with your netid, and click on the little blue link that says AnyConnect VPN if and when you find that Web-based installation was unsuccessful to install Cisco AnyConnect. Then you can run this application to use your computer as if you are on campus. This may be slightly complicated by two-factor authentication being introduced.
 
@@ -20,11 +20,12 @@ If you are on campus or if you have successfully logged into VPN, use the follow
 
 Your username is the same as your TAMU NetID and your password is:
 
+    username: {username}
     password: {password}
 
 See you in class,
 
-Kristen
+Rob
 '''
 
 subject = 'Python class username and password'
@@ -34,7 +35,7 @@ for user, passwd in zip(fu.readlines(), fp.readlines()):
     # remove new line at end
     user = user.split()[0]
     passwd = passwd.split()[0]
-    email = '{username}@email.tamu.edu'.format(username=user)
+    email = '{username}@tamu.edu'.format(username=user)
     message = text.format(username=user, password=passwd)
     # # -s is subject, email address is who to send to, after <<< is body of message
     command = 'mail -s "' + subject + '" ' + email + ' <<< "' + message + '"'

@@ -17,7 +17,7 @@ parser.add_argument('--length', default=3,
 args = parser.parse_args()
 
 # load in list of words
-f = open('../../wordlist.txt')
+f = open('wordlist.txt')
 words = f.readlines()
 f.close()
 
